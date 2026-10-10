@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bookmark Dedup</title>
+  <link rel="icon" href="icons/icon16.png">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/icon48.png" alt="" width="28" height="28">
+      <h1>Bookmark Dedup</h1>
+    </div>
+    <p id="summary" class="summary" aria-live="polite">Scanning…</p>
+    <div class="controls">
+      <div class="segmented" role="radiogroup" aria-label="Matching mode">
+        <label><input type="radio" name="mode" value="normalized" checked> Normalized</label>
+        <label><input type="radio" name="mode" value="exact"> Exact</label>
+      </div>
+      <input id="search" type="search" placeholder="Filter by URL, title or folder" aria-label="Filter">
+      <button id="rescan" type="button" class="btn">Rescan</button>
+    </div>
+  </header>
+
+  <main>
+    <p class="hint" id="mode-hint"></p>
+    <section id="groups" aria-label="Duplicate groups"></section>
+    <p id="empty" class="empty" hidden></p>
+  </main>
+
+  <div id="toast" class="toast" role="status" hidden>
+    <span id="toast-text"></span>
+    <button id="toast-undo" type="button" class="btn btn-link">Undo</button>
+  </div>
+
+  <template id="group-tpl">
+    <article class="group">
+      <header class="group-head">
+        <code class="group-key"></code>
+        <span class="badge"></span>
+      </header>
+      <ul class="rows"></ul>
+      <footer class="group-foot">
+        <button type="button" class="btn btn-danger delete-others">Delete all others</button>
+      </footer>
+    </article>
+  </template>
+
+  <template id="row-tpl">
+    <li class="row">
+      <label class="keep" title="Keep this one">
+        <input type="radio">
+        <span class="keep-label">Keep</span>
+      </label>
+      <img class="favicon" alt="" width="16" height="16">
+      <div class="info">
+        <div class="title"></div>
+        <div class="url"></div>
+        <div class="meta">
+          <button type="button" class="folder btn-link" title="Show in bookmark manager"></button>
+          <span class="date"></span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger-outline delete">Delete</button>
+    </li>
+  </template>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>

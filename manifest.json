@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Dedup",
+  "version": "0.1.0",
+  "description": "Find duplicate bookmarks and choose which ones to delete.",
+  "permissions": ["bookmarks", "favicon"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Find duplicate bookmarks",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
