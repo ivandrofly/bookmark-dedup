@@ -6,7 +6,7 @@ A Chrome extension (Manifest V3, plain JS, no build step) that finds bookmarks p
 
 1. Open `chrome://extensions`.
 2. Turn on **Developer mode** (top right).
-3. Click **Load unpacked** and select this folder.
+3. Click **Load unpacked** and select this folder. You can also download `bookmark-dedup-<version>.zip` from [Releases](https://github.com/ivandrofly/bookmark-dedup/releases), extract it, and select the extracted folder.
 4. Pin the extension and click its icon. The dashboard opens in a new tab.
 
 After editing files, click the reload ↻ button on the extension card and refresh the dashboard tab.
@@ -52,3 +52,10 @@ npm test
 ```
 
 This needs only Node 18+ and has no dependencies.
+
+## Releasing
+
+1. Bump `version` in `manifest.json` (and `package.json`), then commit and push.
+2. Tag and push: `git tag -a vX.Y.Z -m vX.Y.Z && git push origin vX.Y.Z`
+
+The [Release workflow](.github/workflows/release.yml) runs the tests, checks that the tag matches `manifest.json`, builds a zip of the extension files only, and publishes the GitHub release. 0.x versions are published as pre-releases.
